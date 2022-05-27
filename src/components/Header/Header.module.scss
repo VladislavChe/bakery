@@ -1,0 +1,57 @@
+@import '../../styles/vars';
+
+.header {
+  padding-top: 30px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navMenu {
+  display: flex;
+
+  li {
+    padding: 8px;
+    margin-right: 65px;
+
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: $time;
+
+    &:hover {
+      border-bottom: 1px solid $lightBlack;
+      transition: $time;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.alert {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.offer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  max-width: 683px;
+
+  font-family: $Amatic;
+  margin-bottom: 10px;
+}
+
+.text {
+  max-width: 490px;
+  margin-bottom: 65px;
+}
