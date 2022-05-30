@@ -1,0 +1,32 @@
+.about {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  // margin-bottom: 200px;
+}
+.info {
+  max-width: 620px;
+}
+.title {
+  margin-bottom: 45px;
+}
+.text {
+  display: block;
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.photos {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.photoCake {
+  position: absolute;
+  top: 115px;
+  left: 15px;
+}

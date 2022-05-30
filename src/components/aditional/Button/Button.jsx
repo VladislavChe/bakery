@@ -4,7 +4,7 @@ import styles from './Button.module.scss';
 const Button = (props) => {
   return (
     <div className={styles.btn}>
-      <button>Заказать</button>
+      <a href="#">Заказать</a>
     </div>
   );
 };

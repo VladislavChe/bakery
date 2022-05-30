@@ -2,6 +2,7 @@
 
 .header {
   padding-top: 30px;
+  min-height: 100vh;
 }
 
 .nav {
@@ -32,16 +33,27 @@
   }
 }
 
+.callbackBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+
+  svg {
+    margin-right: 10px;
+  }
+}
+
 .alert {
   font-size: 12px;
-  cursor: pointer;
 }
 
 .offer {
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
@@ -54,4 +66,98 @@
 .text {
   max-width: 490px;
   margin-bottom: 65px;
+}
+
+.cake {
+  position: relative;
+}
+
+.cakeImg {
+  width: 655px;
+  height: 655px;
+}
+
+.firstOrbite {
+  width: 747px;
+  height: 747px;
+  margin-top: -373.5px;
+  margin-left: -373.5px;
+
+  animation: spin-right 50s linear infinite;
+
+  img {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 25%;
+    left: 93%;
+    width: 64.68px;
+    height: 55.73px;
+  }
+}
+
+.secondOrbite {
+  width: 847px;
+  height: 847px;
+  margin-top: -423.5px;
+  margin-left: -423.5px;
+  animation: spin-right 60s linear infinite;
+  -webkit-animation: spin-right 60s linear infinite;
+}
+
+.firstOrbite,
+.secondOrbite {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  border: 1px solid #97ceff;
+  border-radius: 50%;
+}
+
+.blueberries21,
+.blueberries22,
+.blueberries23 {
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.blueberries21 {
+  top: 0%;
+  left: 50%;
+}
+
+.blueberries22 {
+  top: 76%;
+  left: 93%;
+}
+
+.blueberries23 {
+  top: 73%;
+  left: 5%;
+}
+
+.lavanda1 {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 17%;
+  left: 13%;
+}
+
+.lavanda2 {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 93%;
+  left: 71%;
+}
+
+@keyframes spin-right {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin-right {
+  100% {
+    transform: rotate(360deg);
+  }
 }
