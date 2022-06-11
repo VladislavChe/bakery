@@ -1,36 +1,22 @@
 import React from 'react';
-import Client1 from '../../../img/client1.png';
-import Start from '../../../img/star.png';
+import Star from '../../../img/star.png';
 import styles from './FeedbackCard.module.scss';
 
 const FeedbackCard = (props) => {
   return (
     <div className={styles.feedbackCard}>
       <div className={styles.left}>
-        <img src={Client1} alt="photo Client" />
+        <img src={props.item.img} alt="photo Client" />
       </div>
       <div className={styles.body}>
-        <h4 className={styles.name}>Мария</h4>
-        <p className={styles.text}>
-          Заказала чизкейк вместо торта на день рождения. Это было лучшим решением! Чизкейк
-          невероятно вкусный! Теперь буду заказывать только тут!
-        </p>
+        <h4 className={styles.name}>{props.item.name}</h4>
+        <p className={styles.text}>{props.item.text}</p>
         <ul className={styles.list}>
-          <li className={styles.item}>
-            <img src={Start} alt="Start" />
-          </li>
-          <li className={styles.item}>
-            <img src={Start} alt="Start" />
-          </li>
-          <li className={styles.item}>
-            <img src={Start} alt="Start" />
-          </li>
-          <li className={styles.item}>
-            <img src={Start} alt="Start" />
-          </li>
-          <li className={styles.item}>
-            <img src={Start} alt="Start" />
-          </li>
+          {props.item.stars.map((item, index) => (
+            <li key={index} className={styles.item}>
+              <img src={Star} alt="Star" />
+            </li>
+          ))}
         </ul>
       </div>
     </div>
