@@ -61,6 +61,7 @@ h2 {
   font-family: $Amatic;
   font-size: 64px;
   font-weight: 700;
+  text-align: center;
 }
 h3 {
   font-size: 24px;
@@ -145,6 +146,11 @@ li {
 
 .berriesBg {
   position: absolute;
+}
+
+.strawberries {
+  margin-left: auto;
+  margin-bottom: -200px;
 }
 
 /*******************************************************************/
