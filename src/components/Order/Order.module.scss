@@ -20,13 +20,20 @@
     padding: 20px 29px;
     margin-bottom: 24px;
 
-    &:last-child {
-      margin-bottom: 12px;
-    }
-
     background: $lightBlue;
     border: 1px solid $blue;
     border-radius: 50px;
+
+    &:last-child {
+      margin-bottom: 12px;
+    }
+    &:focus {
+      background: #fff;
+    }
+    &.error {
+      background: #ffe3e3;
+      color: $black;
+    }
   }
 }
 
@@ -34,16 +41,16 @@
   position: relative;
   display: flex;
   margin-bottom: 65px;
+}
 
-  input[type='checkbox'] {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
+.inputCheckbox {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .checkbox {
@@ -52,7 +59,7 @@
   height: 22px;
 
   background: #fff;
-  border: 2.4px solid $blue;
+  border: 2px solid $blue;
   margin-right: 14px;
 }
 
@@ -64,6 +71,10 @@
 
 .checkBoxText {
   max-width: 335px;
+}
+
+.error {
+  color: red;
 }
 
 .cake {
