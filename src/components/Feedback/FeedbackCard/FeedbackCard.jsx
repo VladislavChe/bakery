@@ -1,4 +1,3 @@
-import React from 'react';
 import Star from '../../../img/star.png';
 import styles from './FeedbackCard.module.scss';
 

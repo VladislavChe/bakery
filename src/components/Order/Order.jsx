@@ -26,8 +26,6 @@ const Order = (props) => {
     setIsChecked(false);
   };
 
-  console.log(errors);
-
   const getInputNumbersValue = (input) => {
     // Return stripped input value — just numbers
     return input.value.replace(/\D/g, '');
@@ -101,56 +99,69 @@ const Order = (props) => {
     }
   };
 
-  const productImageRegister = register('phoneNumber', { required: 'Введите Телефон' });
+  const productImageRegister = register('phoneNumber', {
+    required: 'Введите Телефон *',
+    minLength: 17,
+    message: 'Пожалуйста введите валидный Телефон *',
+  });
 
   return (
     <div className={styles.order}>
       <h2 className={styles.title}>Оформить заказ</h2>
       <div className={styles.body}>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <input
-            {...register('name', { required: 'Введите Имя', maxLength: 20 })}
-            type="text"
-            placeholder="Имя"
-            className={errors?.name && styles.error}
-          />
-          {errors?.name && <span className={styles.error}>{errors.name.message}</span>}
+          <label htmlFor="name">
+            <input
+              {...register('name', { required: 'Введите Имя *', minLength: 2, maxLength: 20 })}
+              type="text"
+              id="name"
+              placeholder="Имя"
+              className={errors?.name && styles.error}
+            />
+            {/* {errors?.name && <span className={styles.errorMsg}>{errors.name.message}</span>} */}
+          </label>
 
-          <input
-            {...productImageRegister}
-            type="phoneNumber"
-            placeholder="Телефон"
-            onKeyDown={onPhoneKeyDown}
-            onPaste={onPhonePaste}
-            onChange={(e) => {
-              productImageRegister.onChange(e);
-              onPhoneInput(e);
-            }}
-            className={errors?.phoneNumber && styles.error}
-          />
-          {errors?.phoneNumber && (
-            <span className={styles.error}>{errors.phoneNumber.message}</span>
-          )}
+          <label htmlFor="phoneNumber">
+            <input
+              {...productImageRegister}
+              id="phoneNumber"
+              type="phoneNumber"
+              placeholder="Телефон"
+              onKeyDown={onPhoneKeyDown}
+              onPaste={onPhonePaste}
+              onChange={(e) => {
+                productImageRegister.onChange(e);
+                onPhoneInput(e);
+              }}
+              className={errors?.phoneNumber && styles.error}
+            />
+            {/* {errors?.phoneNumber && (
+              <span className={styles.errorMsg}>{errors.phoneNumber.message}</span>
+            )} */}
+          </label>
 
-          <input
-            {...register('email', {
-              required: 'Введите E-mail',
-              pattern: {
-                value:
-                  /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-0-9A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u,
-                message: 'Пожалуйста введите валидный e-mail',
-              },
-            })}
-            type="email"
-            placeholder="E-mail"
-            className={errors?.email && styles.error}
-          />
-          {errors?.email && <span className={styles.error}>{errors.email.message}</span>}
+          <label htmlFor="email">
+            <input
+              {...register('email', {
+                required: 'Введите E-mail *',
+                pattern: {
+                  value:
+                    /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-0-9A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u,
+                  message: 'Пожалуйста введите валидный e-mail',
+                },
+              })}
+              id="email"
+              type="email"
+              placeholder="E-mail"
+              className={`${styles.inputEmail} ${errors?.email && styles.error}`}
+            />
+            {/* {errors?.email && <span className={styles.errorMsg}>{errors.email.message}</span>} */}
+          </label>
 
           <Controller
             name="check"
             control={control}
-            rules={{ required: 'Требуется соглашение' }}
+            rules={{ required: 'Требуется соглашение *' }}
             render={({ field }) => (
               <label {...field} className={styles.checkboxWrapp}>
                 <input
@@ -164,10 +175,11 @@ const Order = (props) => {
                 ) : (
                   <img className={styles.checked} src={CheckMark} alt="CheckMark" />
                 )}
-                <p className={styles.checkBoxText}>
-                  Я согласен(-на) на обработку моих персональных данных{' '}
+                <p
+                  className={`${styles.checkBoxText} ${errors?.check && styles.errorCheckBoxText}`}>
+                  Я согласен(-на) на обработку моих персональных данных <span>*</span>
                 </p>
-                {errors?.check && <span className={styles.error}>{errors.check.message}</span>}
+                {/* {errors?.check && <span className={styles.errorMsg}>{errors.check.message}</span>} */}
               </label>
             )}
           />

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -6,6 +7,30 @@ import Client1 from '../../img/client1.png';
 import Client2 from '../../img/client2.png';
 import styles from './Feedback.module.scss';
 import FeedbackCard from './FeedbackCard/FeedbackCard';
+
+// const SimpleSlider2 = ({ feedback }) => {
+//   const settings = {
+//     dots: false,
+//     infinite: true,
+//     slidesToShow: 2,
+//     slidesToScroll: 2,
+//   };
+
+//   return (
+//     <div className={styles.feedback}>
+//       <h2 className={styles.title}>ОТЗЫВЫ НАШИХ КЛИЕНТОВ</h2>
+//       <Slider {...settings}>
+//         {feedback.map((item, index) => (
+//           <div key={index}>
+//             <FeedbackCard item={item} />
+//           </div>
+//         ))}
+//       </Slider>
+//     </div>
+//   );
+// };
+
+// export default SimpleSlider2;
 
 export default class SimpleSlider extends Component {
   render() {
@@ -42,11 +67,12 @@ export default class SimpleSlider extends Component {
         stars: [1, 2, 3, 4],
       },
     ];
+
     return (
       <div className={styles.feedback}>
         <h2 className={styles.title}>ОТЗЫВЫ НАШИХ КЛИЕНТОВ</h2>
         <Slider {...settings}>
-          {clients.map((item, index) => (
+          {this.props.feedback.map((item, index) => (
             <div key={index}>
               <FeedbackCard item={item} />
             </div>

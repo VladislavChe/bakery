@@ -12,6 +12,7 @@ body {
   font-weight: 400;
   color: $black;
   font-size: $mainFontSize;
+  line-height: 170%;
 
   background-color: #fff;
   text-transform: none;
@@ -133,6 +134,10 @@ li {
   list-style-type: none;
 }
 
+.App {
+  position: relative;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1530px;
@@ -140,6 +145,8 @@ li {
 }
 
 .bg {
+  position: relative;
+  z-index: 1;
   background: url(../img/blotter.png) no-repeat;
   background-position: 43vw top;
 }
@@ -151,6 +158,15 @@ li {
 .strawberries {
   margin-left: auto;
   margin-bottom: -200px;
+}
+
+.blotter {
+  position: absolute;
+  bottom: -237px;
+  right: -510px;
+  width: 1421.48px;
+  height: 1540.73px;
+  z-index: 0;
 }
 
 /*******************************************************************/
@@ -176,22 +192,32 @@ li {
   display: flex;
   justify-content: center;
   height: 100%;
+  will-change: transform;
 }
 
 /* Слайд */
 .slick-slide {
   outline: none !important; /* отключение обводки на слайде при клике */
   display: flex !important;
+
+  align-items: center;
+  will-change: transform;
+
   &:nth-child(odd) {
     justify-content: flex-end;
     margin-right: 30px;
   }
 
-  align-items: center;
+  div {
+    &:focus-visible {
+      outline: none;
+    }
+  }
 }
 
 /* Слайд активный (показывается) */
 .slick-slide.slick-active {
+  will-change: transform;
 }
 /* Слайд основной */
 .slick-slide.slick-current {
@@ -201,6 +227,7 @@ li {
 }
 /* Клонированный слайд */
 .slick-slide.slick-cloned {
+  will-change: transform;
 }
 /* Стрелка */
 .slick-arrow {

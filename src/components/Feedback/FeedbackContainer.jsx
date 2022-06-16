@@ -1,16 +1,15 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { setTest } from './../../redux/main-reducer';
 import Feedback from './Feedback';
 
-const FeedbackContainer = () => {
-  return <Feedback />;
+const FeedbackContainer = ({ feedback }) => {
+  return <Feedback feedback={feedback} />;
 };
 
 let mapStateToProps = (state) => {
   return {
     test: state.mainPage.test,
-    assortment: state.mainPage.assortment,
+    feedback: state.mainPage.feedback,
   };
 };
 

@@ -1,6 +1,7 @@
 @import '../../styles/vars';
 
 .order {
+  padding-bottom: 155px;
 }
 
 .title {
@@ -15,6 +16,10 @@
   width: 620px;
   margin-top: 95px;
 
+  label {
+    position: relative;
+  }
+
   input {
     width: 100%;
     padding: 20px 29px;
@@ -24,9 +29,6 @@
     border: 1px solid $blue;
     border-radius: 50px;
 
-    &:last-child {
-      margin-bottom: 12px;
-    }
     &:focus {
       background: #fff;
     }
@@ -37,6 +39,10 @@
   }
 }
 
+.inputEmail {
+  margin-bottom: 12px;
+}
+
 .checkboxWrapp {
   position: relative;
   display: flex;
@@ -44,13 +50,15 @@
 }
 
 .inputCheckbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+
+  white-space: nowrap;
+
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
-  height: 1px;
   overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
 }
 
 .checkbox {
@@ -71,9 +79,22 @@
 
 .checkBoxText {
   max-width: 335px;
+
+  span {
+    color: red;
+    font-size: 20px;
+  }
 }
 
-.error {
+.errorCheckBoxText {
+  color: red;
+}
+
+.errorMsg {
+  position: absolute;
+  top: -28px;
+  left: 0;
+
   color: red;
 }
 

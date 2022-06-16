@@ -1,0 +1,71 @@
+@import '../../styles/vars';
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 101px;
+  height: 61px;
+}
+
+.navMenu {
+  display: flex;
+
+  li {
+    padding: 8px;
+    margin-right: 65px;
+
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: $time;
+
+    &:hover {
+      border-bottom: 1px solid $lightBlack;
+      transition: $time;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.callbackBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+
+  svg {
+    margin-right: 10px;
+  }
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 23px;
+
+  a {
+    display: block;
+    margin-right: 19px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    img {
+      width: 36.25px;
+      height: 36.25px;
+    }
+  }
+}
+
+.alert {
+  font-size: 12px;
+}

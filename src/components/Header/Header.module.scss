@@ -2,58 +2,15 @@
 
 .header {
   padding-top: 30px;
-  min-height: 100vh;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navMenu {
-  display: flex;
-
-  li {
-    padding: 8px;
-    margin-right: 65px;
-
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: $time;
-
-    &:hover {
-      border-bottom: 1px solid $lightBlack;
-      transition: $time;
-    }
-
-    &:last-child {
-      margin-right: 0px;
-    }
-  }
-}
-
-.callbackBlock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  cursor: pointer;
-
-  svg {
-    margin-right: 10px;
-  }
-}
-
-.alert {
-  font-size: 12px;
 }
 
 .offer {
-  height: 100vh;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+
+.inner {
+  margin-top: 258px;
 }
 
 .title {
@@ -70,6 +27,7 @@
 
 .cake {
   position: relative;
+  margin-top: 94px;
 }
 
 .cakeImg {
@@ -148,6 +106,11 @@
   position: absolute;
   top: 93%;
   left: 71%;
+}
+
+.bigCake {
+  width: 655px;
+  height: 655px;
 }
 
 @keyframes spin-right {
