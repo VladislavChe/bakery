@@ -11,7 +11,22 @@ const Footer = (props) => {
           src={require('../../img/copyright-icon.png')}
           alt="copyright-icon"
         />
-        <p className={styles.text}>2022 Кондитерская «Bakery». Все права защищены. </p>
+        <div>
+          <a
+            target="_blank"
+            href="https://t.me/TatyanaDesign"
+            className={styles.text}
+            rel="noreferrer">
+            Designed by @tatyana.shillova
+          </a>
+          <a
+            target="_blank"
+            href="https://t.me/che_vladislav"
+            className={styles.textDev}
+            rel="noreferrer">
+            Development by @che_vladislav
+          </a>
+        </div>
       </div>
     </div>
   );

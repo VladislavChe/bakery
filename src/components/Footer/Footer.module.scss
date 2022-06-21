@@ -1,21 +1,36 @@
+@import '../../styles/vars';
+
 .footer {
   padding-bottom: 12px;
+
+  nav {
+    align-items: flex-start;
+  }
 }
 
 .copyright {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 76px;
+  margin-top: 10px;
+
+  a {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+
+    border: 1px solid transparent;
+    transition: $time;
+
+    &:hover {
+      border-bottom: 1px solid $lightBlack;
+      transition: $time;
+    }
+  }
 }
 
 .icon {
   width: 15px;
   height: 15px;
   margin-right: 18px;
-}
-
-.text {
-  font-size: 16px;
-  font-weight: 400;
 }

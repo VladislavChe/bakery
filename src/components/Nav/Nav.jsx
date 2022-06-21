@@ -1,13 +1,16 @@
+import React from 'react';
 import Logo from '../../img/logo.png';
 import { ReactComponent as Phone } from '../../img/phone.svg';
 import styles from './Nav.module.scss';
 
 const Nav = (props) => {
+  const [active, setActive] = React.useState(false);
+
   return (
     <>
       <nav className={styles.nav}>
         <img className={styles.logo} src={Logo} alt="logo" />
-        <ul className={styles.navMenu}>
+        <ul className={`${styles.navMenu} ${active && styles.navMenuActive}`}>
           <li>О нас</li>
           <li>Ассортимент</li>
           <li>Отзывы</li>
@@ -46,6 +49,11 @@ const Nav = (props) => {
           ) : (
             <div className={styles.alert}>Заказать бесплатный звонок</div>
           )}
+        </div>
+        <div
+          onClick={() => setActive(!active)}
+          className={`${styles.hamburger} ${active ? styles.hamburgerActive : ''}`}>
+          <div className={styles.centerLine}></div>
         </div>
       </nav>
     </>

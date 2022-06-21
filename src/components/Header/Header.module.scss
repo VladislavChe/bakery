@@ -1,23 +1,39 @@
 @import '../../styles/vars';
 
 .header {
+  height: 90vh;
   padding-top: 30px;
+}
+
+.blueberries21Top {
+  display: none;
+}
+.blueberries22Top {
+  display: none;
+}
+.blueberries23Top {
+  display: none;
+}
+.srawberries {
+  display: none;
 }
 
 .offer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 100px;
 }
 
 .inner {
-  margin-top: 258px;
+  max-width: 683px;
 }
 
 .title {
   max-width: 683px;
+  margin-bottom: 10px;
 
   font-family: $Amatic;
-  margin-bottom: 10px;
 }
 
 .text {
@@ -25,9 +41,25 @@
   margin-bottom: 65px;
 }
 
+.cakeWrapp {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 845px;
+  max-height: 845px;
+  width: 50%;
+  height: 50%;
+  margin-top: -20px;
+}
+
 .cake {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  margin-top: 94px;
+  width: 100%;
+  height: 100%;
+  margin-right: -70px;
+  padding: 15px;
 }
 
 .cakeImg {
@@ -36,12 +68,14 @@
 }
 
 .firstOrbite {
-  width: 747px;
-  height: 747px;
-  margin-top: -373.5px;
-  margin-left: -373.5px;
+  width: 88%;
+  height: 0;
+  padding-bottom: 88%;
+  margin-top: -44%;
+  margin-left: -44%;
 
   animation: spin-right 50s linear infinite;
+  -webkit-animation: spin-right 50s linear infinite;
 
   img {
     transform: translate(-50%, -50%);
@@ -54,10 +88,12 @@
 }
 
 .secondOrbite {
-  width: 847px;
-  height: 847px;
-  margin-top: -423.5px;
-  margin-left: -423.5px;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  margin-top: -50%;
+  margin-left: -50%;
+
   animation: spin-right 60s linear infinite;
   -webkit-animation: spin-right 60s linear infinite;
 }
@@ -109,8 +145,10 @@
 }
 
 .bigCake {
-  width: 655px;
-  height: 655px;
+  max-width: 655px;
+  max-height: 655px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 @keyframes spin-right {
@@ -122,5 +160,101 @@
 @-webkit-keyframes spin-right {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/* 1550px - 1700px */
+@media screen and (max-width: 1700px) {
+  .cake {
+    margin-right: 0;
+  }
+}
+
+/* 1200px - 1550px */
+@media screen and (max-width: 1550px) {
+  .title {
+    max-width: 600px;
+  }
+  .text {
+    max-width: 380px;
+  }
+}
+
+/* 768px - 992px */
+@media screen and (max-width: 992px) {
+  .header {
+    position: relative;
+  }
+  .offer {
+    justify-content: center;
+  }
+  .blueberries21Top {
+    display: block;
+    position: absolute;
+    top: 20%;
+    right: 29%;
+    width: 43px;
+    height: 37px;
+    transform: rotate(155deg);
+  }
+  .blueberries22Top {
+    display: block;
+    position: absolute;
+    top: 34%;
+    right: 3%;
+    width: 59px;
+    height: 50px;
+    transform: rotate(-96deg);
+  }
+  .blueberries23Top {
+    display: block;
+    position: absolute;
+    top: 51%;
+    right: 11%;
+    width: 35px;
+    height: 30px;
+    transform: rotate(-110deg);
+  }
+  .srawberries {
+    display: block;
+    position: absolute;
+    top: 62%;
+    right: -5%;
+    width: 100px;
+    height: 124px;
+  }
+  .cakeWrapp {
+    display: none;
+  }
+  .inner {
+    max-width: 500px;
+    text-align: center;
+  }
+  .title {
+    margin-bottom: 0;
+  }
+  .text {
+    margin: 30px auto;
+  }
+}
+
+/* 320px - 576px */
+@media screen and (max-width: 576px) {
+  .offer {
+    justify-content: flex-start;
+  }
+  .inner {
+    max-width: 296px;
+    text-align: left;
+  }
+  .text {
+    max-width: 490px;
+    margin-bottom: 65px;
+  }
+  .blueberries21Top {
+    top: 28%;
+  }
+  .srawberries {
+    right: -45px;
   }
 }

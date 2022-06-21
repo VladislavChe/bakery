@@ -12,24 +12,45 @@ import './styles/index.scss';
 function App() {
   return (
     <div className="App">
-      <div className="bg">
-        <div className="container">
+      <header className="header">
+        <div className="container header-container">
           <Header />
+          <img className="blotter" src={require('./img/blotter.png')} />
+        </div>
+      </header>
+      <section className="advantages">
+        <div className="container advantages-container">
           <Advantages />
+        </div>
+      </section>
+      <section className="about">
+        <div className="container about-container">
           <About />
         </div>
-        <img className="berriesBG" src={Berries} alt="berries" />
-        <div className="container">
+      </section>
+      <section className="assortment">
+        <div className="container assortment-container">
+          <img className="berriesBg" src={Berries} alt="berries" />
           <AssortmentContainer />
         </div>
-        <img className="strawberries" src={Strawberries} alt="Strawberries" />
-        <div className="container">
+      </section>
+      <section className="feedback">
+        <div className="container feedback-container">
+          <img className="strawberries" src={Strawberries} alt="Strawberries" />
           <FeedbackContainer />
-          <Order />
-          <Footer />
         </div>
-      </div>
-      <img className="blotter" src={require('./img/blotter.png')} />
+      </section>
+      <section className="order">
+        <div className="container order-container">
+          <Order />
+        </div>
+      </section>
+      <footer className="footer">
+        <div className="container footer-container">
+          <Footer />
+          <img className="blotter" src={require('./img/blotter.png')} />
+        </div>
+      </footer>
     </div>
   );
 }

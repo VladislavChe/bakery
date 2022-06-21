@@ -1,9 +1,11 @@
 @import '../../styles/vars';
 
 .nav {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 10vh;
 }
 
 .logo {
@@ -68,4 +70,114 @@
 
 .alert {
   font-size: 12px;
+}
+
+.hamburger {
+  display: none;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 21px;
+}
+
+.hamburgerActive {
+  .centerLine {
+    background: transparent;
+
+    &::before {
+      top: 50%;
+      margin-top: -1.5px;
+
+      transform: rotate(45deg);
+      transition: $time;
+    }
+    &::after {
+      bottom: 50%;
+      margin-bottom: -1.5px;
+
+      transform: rotate(-45deg);
+      transition: $time;
+    }
+  }
+}
+
+.centerLine {
+  width: 100%;
+  height: 3px;
+
+  background: $black;
+  transition: $time;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+
+    background: $black;
+    transition: $time;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+  }
+  &::after {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+/* 992px - 1200px */
+@media screen and (max-width: 1200px) {
+  .navMenu {
+    li {
+      margin-right: 10px;
+    }
+  }
+}
+
+/* 768px - 992px */
+@media screen and (max-width: 992px) {
+  .navMenu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px 16px;
+
+    background: #ffffff;
+    border: 1px solid $lightBlack;
+    z-index: 5;
+    opacity: 0;
+    transition: $time;
+
+    li {
+      margin-right: 0px;
+      list-style: inside;
+      opacity: 0;
+      transition: $time;
+    }
+  }
+  .navMenuActive {
+    opacity: 1;
+    transition: $time;
+    li {
+      opacity: 1;
+      transition: $time;
+
+      &:hover {
+        border-bottom: 1px solid transparent;
+      }
+    }
+  }
+  .hamburger {
+    display: flex;
+  }
+  .callbackBlock {
+    display: none;
+  }
 }
