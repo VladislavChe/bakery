@@ -1,16 +1,20 @@
 .feedbackCard {
+  position: relative;
   display: flex;
-  width: 620px;
-  padding: 40px 99px 40px 40px;
+  padding: 40px;
   margin: 0 auto;
+  height: 100%;
 
   box-shadow: 6px 8px 65px rgba(0, 0, 0, 0.1);
   border-radius: 35px;
+  z-index: 1;
 }
 .left {
   padding-right: 25px;
 }
 .body {
+  display: flex;
+  flex-direction: column;
   width: 337px;
 }
 .name {
@@ -21,6 +25,7 @@
   text-transform: none;
 }
 .text {
+  flex: 1 1;
   margin-bottom: 20px;
 }
 .list {
@@ -31,5 +36,34 @@
 
   &:last-child {
     margin-right: 0px;
+  }
+}
+
+/* 768px - 992px */
+@media screen and (max-width: 992px) {
+  .body {
+    width: 90%;
+  }
+}
+
+/* 576px - 768px */
+@media screen and (max-width: 768px) {
+  .feedbackCard {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+  }
+  .left {
+    padding: 0;
+    img {
+      margin: 0 auto 20px auto;
+    }
+  }
+  .body {
+    text-align: center;
+    flex: 1 1;
+  }
+  .list {
+    justify-content: center;
   }
 }

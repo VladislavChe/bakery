@@ -1,8 +1,6 @@
 @import '../../styles/vars';
 
 .advantages {
-  margin-top: 300px;
-  margin-bottom: 165px;
 }
 
 .list {
@@ -107,5 +105,22 @@
   }
   100% {
     transform: scale(1.1);
+  }
+}
+
+/* 768px - 992px */
+@media screen and (max-width: 992px) {
+  .list {
+    flex-wrap: wrap;
+    li {
+      margin-bottom: 50px;
+    }
+  }
+}
+/* 322px - 576px*/
+@media screen and (max-width: 576px) {
+  .list {
+    flex-direction: column;
+    align-items: center;
   }
 }

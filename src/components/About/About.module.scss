@@ -2,14 +2,27 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 267px;
 }
+
 .info {
+  position: relative;
   max-width: 620px;
+  width: 41%;
 }
+
+.strawberries {
+  display: none;
+  position: absolute;
+  top: 32px;
+  right: -45px;
+  width: 100px;
+  height: 124px;
+}
+
 .title {
   margin-bottom: 45px;
 }
+
 .text {
   display: block;
   margin-bottom: 30px;
@@ -23,10 +36,85 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  align-items: flex-start;
+  width: 59%;
+  padding-left: 30px;
+
+  img {
+    max-width: 490px;
+    max-height: 565px;
+    width: 50%;
+  }
 }
+
 .photoCake {
   position: absolute;
-  top: 115px;
-  left: 15px;
+  top: 90px;
+  left: 100px;
+  z-index: 1;
+}
+
+.photoGirl {
+  position: relative;
+  z-index: 0;
+}
+
+/* 1200px - 1550px */
+@media screen and (max-width: 1550px) {
+}
+
+/* 992px - 1200px */
+@media screen and (max-width: 1200px) {
+  .about {
+    align-items: center;
+  }
+  .photos {
+    width: 50%;
+  }
+  .info {
+    width: 50%;
+  }
+  .photoCake {
+    left: 68px;
+  }
+}
+
+/* 768px - 992px */
+@media screen and (max-width: 992px) {
+  .about {
+    width: 100%;
+  }
+  .info {
+    width: 100%;
+    max-width: 100%;
+  }
+  .strawberries {
+    display: block;
+  }
+  .textFirst {
+    max-width: 670px;
+  }
+  .textSecond {
+    max-width: 100%;
+  }
+  .photos {
+    display: none;
+  }
+}
+
+/* 576px - 768px */
+@media screen and (max-width: 768px) {
+  .strawberries {
+    top: 20px;
+  }
+  .textFirst {
+    max-width: 530px;
+  }
+}
+
+/* 320px - 576px */
+@media screen and (max-width: 576px) {
+  .textFirst {
+    max-width: 350px;
+  }
 }

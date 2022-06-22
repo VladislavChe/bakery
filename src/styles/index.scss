@@ -65,6 +65,7 @@ h2 {
   font-size: 64px;
   font-weight: 700;
   text-align: center;
+  line-height: 140%;
 }
 h3 {
   font-size: 24px;
@@ -165,14 +166,30 @@ li {
   }
 }
 
+.advantages {
+  margin-top: 400px;
+}
+
+.about {
+  margin-top: 200px;
+}
+
+.assortment {
+  margin-top: 200px;
+}
+
 .assortment-container {
   position: relative;
 
   .berriesBg {
     position: absolute;
-    top: -331px;
-    left: -222px;
+    top: -186px;
+    left: -100px;
   }
+}
+
+.feedback {
+  margin-top: 200px;
 }
 
 .feedback-container {
@@ -180,9 +197,19 @@ li {
 
   .strawberries {
     position: absolute;
-    right: -209px;
+    right: -100px;
     top: -187px;
   }
+  .berriesBg {
+    display: none;
+    position: absolute;
+    top: -186px;
+    left: -100px;
+  }
+}
+
+.order {
+  margin-top: 200px;
 }
 
 .order-container {
@@ -212,7 +239,10 @@ li {
 
 /* Слайдер *БАЗА СТИЛЕЙ* */
 .slick-slider {
-  height: 350px;
+  margin: 0 auto;
+  width: 100%;
+
+  // border: 1px solid red;
 }
 /* Слайдер запущен */
 .slick-slider.slick-initialized {
@@ -223,29 +253,40 @@ li {
 /* Ограничивающая оболочка */
 .slick-list {
   height: 100%;
+  margin: 0 auto;
+  border-radius: 35px;
+  width: 80%;
+  overflow: visible;
+
+  // border: 1px solid rgb(81, 255, 0);
 }
 /* Лента слайдов */
 .slick-track {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
   justify-content: center;
   height: 100%;
   will-change: transform;
+
+  // border: 1px solid red;
 }
 
 /* Слайд */
 .slick-slide {
-  outline: none !important; /* отключение обводки на слайде при клике */
   display: flex !important;
-
-  align-items: center;
+  height: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: $time;
+  outline: none !important; /* отключение обводки на слайде при клике */
   will-change: transform;
 
-  &:nth-child(odd) {
-    justify-content: flex-end;
-    margin-right: 30px;
-  }
+  // border: 1px solid rgb(255, 0, 0);
 
-  div {
+  & > div {
+    display: flex;
+    padding: 0 15px;
     &:focus-visible {
       outline: none;
     }
@@ -254,6 +295,9 @@ li {
 
 /* Слайд активный (показывается) */
 .slick-slide.slick-active {
+  opacity: 1;
+  visibility: visible;
+  transition: $time;
   will-change: transform;
 }
 /* Слайд основной */
@@ -292,20 +336,50 @@ li {
 }
 /* Точки (булиты) */
 .slick-dots {
+  bottom: -45px;
 }
 .slick-dots li {
 }
 /* Активная точка */
 .slick-dots li.slick-active {
+  button {
+    &::before {
+      background: $blue;
+      border: 1px solid $blue;
+    }
+  }
 }
 /* Элемент точки */
 .slick-dots li button {
+  &::before {
+    content: '';
+    border: 1px solid $blue;
+    border-radius: 50%;
+    width: 9px;
+    height: 9px;
+  }
 }
 
 /*Responsive*/
-/* 1200px - 1400px */
-@media screen and (max-width: 1400px) {
+/* 1550px - 1700px */
+@media screen and (max-width: 1700px) {
 }
+
+/* 1200px - 1550px */
+@media screen and (max-width: 1550px) {
+  .slick-list {
+    width: 90%;
+  }
+  .slick-slide {
+    & > div {
+      width: 98% !important;
+    }
+  }
+  .slick-slide.slick-active {
+    justify-content: center;
+  }
+}
+
 /* 992px - 1200px */
 @media screen and (max-width: 1200px) {
   .header-container {
@@ -324,6 +398,49 @@ li {
       right: -43%;
     }
   }
+  .advantages {
+    margin-top: 200px;
+  }
+  .assortment-container {
+    .berriesBg {
+      display: none;
+    }
+  }
+  .feedback-container {
+    position: relative;
+
+    .strawberries {
+      display: none;
+    }
+    .berriesBg {
+      display: block;
+      left: -47px;
+      width: 116px;
+      height: 134px;
+    }
+  }
+  .slick-list {
+    width: 100%;
+    display: block;
+  }
+  .slick-track {
+    display: block;
+    height: auto;
+  }
+  .slick-slide {
+    display: block !important;
+    height: 100%;
+
+    & > div {
+      display: block;
+      padding: 0;
+      width: 100% !important;
+    }
+  }
+}
+
+/* 576px - 768px */
+@media screen and (max-width: 768px) {
 }
 
 /* 320px - 576px */

@@ -1,9 +1,18 @@
 .feedback {
   position: relative;
-  padding-bottom: 200px;
 }
 
 .title {
   margin-bottom: 65px;
   text-align: center;
+}
+
+.feedbackTestContainer {
+  width: 100%;
+  margin-top: 200px;
+  display: flex;
+}
+
+.wrappFeedbackCard2 {
+  width: 50%;
 }

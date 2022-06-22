@@ -3,8 +3,6 @@ import { Component } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import Client1 from '../../img/client1.png';
-import Client2 from '../../img/client2.png';
 import styles from './Feedback.module.scss';
 import FeedbackCard from './FeedbackCard/FeedbackCard';
 
@@ -36,37 +34,42 @@ export default class SimpleSlider extends Component {
   render() {
     const settings = {
       dots: false,
+      accessibility: true,
       infinite: true,
       slidesToShow: 2,
-      slidesToScroll: 2,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true,
+            arrows: false,
+            adaptiveHeight: true,
+          },
+        },
+      ],
+      // appendDots: (dots) => (
+      //   <div
+      //     style={{
+      //       padding: '0px',
+      //     }}>
+      //     <ul style={{ margin: '7px' }}> {dots} </ul>
+      //   </div>
+      // ),
+      // customPaging: (i) => (
+      //   <div
+      //     style={{
+      //       width: '9px',
+      //       height: '9px',
+      //       color: 'blue',
+      //       borderRadius: '50%',
+      //       border: '1px solid red',
+      //     }}></div>
+      // ),
     };
-
-    const clients = [
-      {
-        img: Client1,
-        name: 'Мария',
-        text: 'Заказала чизкейк вместо торта на день рождения. Это было лучшим решением! Чизкейк невероятно вкусный! Теперь буду заказывать только тут!',
-        stars: [1, 2, 3, 4, 5],
-      },
-      {
-        img: Client2,
-        name: 'Анна',
-        text: 'Заказала торт вместо чизкейка на день рождения. Это было лучшим решением! Торт невероятно вкусный! Теперь буду заказывать только тут!',
-        stars: [1, 2, 3, 4],
-      },
-      {
-        img: Client1,
-        name: 'Мария',
-        text: 'Заказала чизкейк вместо торта на день рождения. Это было лучшим решением! Чизкейк невероятно вкусный! Теперь буду заказывать только тут!',
-        stars: [1, 2, 3, 4, 5],
-      },
-      {
-        img: Client2,
-        name: 'Анна',
-        text: 'Заказала торт вместо чизкейка на день рождения. Это было лучшим решением! Торт невероятно вкусный! Теперь буду заказывать только тут!',
-        stars: [1, 2, 3, 4],
-      },
-    ];
 
     return (
       <div className={styles.feedback}>

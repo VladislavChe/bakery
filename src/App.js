@@ -36,6 +36,7 @@ function App() {
       </section>
       <section className="feedback">
         <div className="container feedback-container">
+          <img className="berriesBg" src={Berries} alt="berries" />
           <img className="strawberries" src={Strawberries} alt="Strawberries" />
           <FeedbackContainer />
         </div>
