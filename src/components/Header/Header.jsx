@@ -13,7 +13,7 @@ import styles from './Header.module.scss';
 const Header = (props) => {
   return (
     <div className={styles.header}>
-      <Nav socialIcons={false} />
+      <Nav theme={'header'} />
       <img className={styles.blueberries21Top} src={Blueberries21} alt="Blueberries" />
       <img className={styles.blueberries22Top} src={Blueberries22} alt="Blueberries" />
       <img className={styles.blueberries23Top} src={Blueberries23} alt="Blueberries" />

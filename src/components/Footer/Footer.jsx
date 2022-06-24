@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 const Footer = (props) => {
   return (
     <div className={styles.footer}>
-      <Nav socialIcons={true} />
+      <Nav theme={'footer'} />
       <div className={styles.copyright}>
         <img
           className={styles.icon}
@@ -14,14 +14,14 @@ const Footer = (props) => {
         <div>
           <a
             target="_blank"
-            href="https://t.me/TatyanaDesign"
+            href="https://instagram.com/tatyana.shillova/"
             className={styles.text}
             rel="noreferrer">
             Designed by @tatyana.shillova
           </a>
           <a
             target="_blank"
-            href="https://t.me/che_vladislav"
+            href="https://vk.com/vladislav___che"
             className={styles.textDev}
             rel="noreferrer">
             Development by @che_vladislav

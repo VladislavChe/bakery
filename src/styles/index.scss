@@ -16,7 +16,7 @@ body {
 
   background-color: #fff;
   text-transform: none;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 
   body *,
   body *:before,
@@ -227,6 +227,8 @@ li {
     right: -835px;
     width: 1421.48px;
     height: 1540.73px;
+    min-width: 1421.48px;
+    min-height: 1540.73px;
 
     z-index: -1;
     transform: rotate(14deg);
@@ -360,6 +362,14 @@ li {
   }
 }
 
+.test {
+  margin-top: 1500px;
+}
+.link {
+  cursor: pointer;
+  color: red;
+}
+
 /*Responsive*/
 /* 1550px - 1700px */
 @media screen and (max-width: 1700px) {
@@ -396,6 +406,11 @@ li {
     .blotter {
       top: -93%;
       right: -43%;
+    }
+  }
+  .footer-container {
+    .blotter {
+      right: -68%;
     }
   }
   .advantages {
@@ -441,9 +456,14 @@ li {
 
 /* 576px - 768px */
 @media screen and (max-width: 768px) {
+  .footer-container {
+    .blotter {
+      right: -113%;
+    }
+  }
 }
 
-/* 320px - 576px */
+/* 450px - 576px */
 @media screen and (max-width: 576px) {
   .header-container {
     .blotter {
@@ -452,6 +472,36 @@ li {
       width: 488.62px;
       height: 529.62px;
       transform: rotate(8deg);
+    }
+  }
+  .footer-container {
+    .blotter {
+      top: -374%;
+      right: -157%;
+    }
+  }
+}
+
+/* 350px - 450px */
+@media screen and (max-width: 450px) {
+  .footer-container {
+    .blotter {
+      width: 1016px;
+      height: 1045px;
+      min-height: 1016px;
+      min-width: 1045px;
+      top: -263%;
+      right: -138%;
+    }
+  }
+}
+
+/* 320px - 350px */
+@media screen and (max-width: 350px) {
+  .footer-container {
+    .blotter {
+      right: -179%;
+      top: -200%;
     }
   }
 }

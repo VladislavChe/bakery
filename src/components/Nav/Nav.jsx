@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-scroll';
 import Logo from '../../img/logo.png';
 import { ReactComponent as Phone } from '../../img/phone.svg';
 import styles from './Nav.module.scss';
@@ -7,22 +8,45 @@ const Nav = (props) => {
   const [active, setActive] = React.useState(false);
 
   return (
-    <>
-      <nav className={styles.nav}>
+    <div>
+      <nav className={`${styles.nav} ${styles[`nav--${props.theme}`]}`}>
         <img className={styles.logo} src={Logo} alt="logo" />
         <ul className={`${styles.navMenu} ${active && styles.navMenuActive}`}>
-          <li>О нас</li>
-          <li>Ассортимент</li>
-          <li>Отзывы</li>
-          <li>Доставка</li>
-          <li>Контакты</li>
+          <li>
+            <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
+              О нас
+            </Link>
+          </li>
+          <li>
+            <Link to="assortment" spy={true} smooth={true} offset={0} duration={500}>
+              Ассортимент
+            </Link>
+          </li>
+          <li>
+            <Link to="feedback" spy={true} smooth={true} offset={0} duration={500}>
+              Отзывы
+            </Link>
+          </li>
+          <li>
+            <Link to="advantages" spy={true} smooth={true} offset={-50} duration={500}>
+              Доставка
+            </Link>
+          </li>
+          <li>
+            <Link to="order" spy={true} smooth={true} offset={0} duration={500}>
+              Контакты
+            </Link>
+          </li>
         </ul>
-        <div className={styles.callbackBlock}>
+        <div className={`${styles.callbackBlock} ${styles[`callbackBlock--${props.theme}`]}`}>
           <div>
             <Phone />
             <a href="tel:88009998877">8 (800) 999 88 77</a>
           </div>
-          {props.socialIcons ? (
+          {props.theme === 'header' && (
+            <div className={styles.alert}>Заказать бесплатный звонок</div>
+          )}
+          {props.theme === 'footer' && (
             <div className={styles.socialIcons}>
               <a target="_blank" href="https://twitter.com/" rel="noreferrer">
                 <img
@@ -46,17 +70,17 @@ const Nav = (props) => {
                 />
               </a>
             </div>
-          ) : (
-            <div className={styles.alert}>Заказать бесплатный звонок</div>
           )}
         </div>
-        <div
-          onClick={() => setActive(!active)}
-          className={`${styles.hamburger} ${active ? styles.hamburgerActive : ''}`}>
-          <div className={styles.centerLine}></div>
-        </div>
+        {props.theme === 'header' && (
+          <div
+            className={`${styles.hamburger} ${active ? styles.hamburgerActive : ''}`}
+            onClick={() => setActive(!active)}>
+            <div className={styles.centerLine}></div>
+          </div>
+        )}
       </nav>
-    </>
+    </div>
   );
 };
 

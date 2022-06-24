@@ -18,35 +18,36 @@ function App() {
           <img className="blotter" src={require('./img/blotter.png')} />
         </div>
       </header>
-      <section className="advantages">
+      <section className="advantages" id="advantages">
         <div className="container advantages-container">
           <Advantages />
         </div>
       </section>
-      <section className="about">
+
+      <section className="about" id="about">
         <div className="container about-container">
           <About />
         </div>
       </section>
-      <section className="assortment">
+      <section className="assortment" id="assortment">
         <div className="container assortment-container">
           <img className="berriesBg" src={Berries} alt="berries" />
           <AssortmentContainer />
         </div>
       </section>
-      <section className="feedback">
+      <section className="feedback" id="feedback">
         <div className="container feedback-container">
           <img className="berriesBg" src={Berries} alt="berries" />
           <img className="strawberries" src={Strawberries} alt="Strawberries" />
           <FeedbackContainer />
         </div>
       </section>
-      <section className="order">
+      <section className="order" id="order">
         <div className="container order-container">
           <Order />
         </div>
       </section>
-      <footer className="footer">
+      <footer className="footer" id="footer">
         <div className="container footer-container">
           <Footer />
           <img className="blotter" src={require('./img/blotter.png')} />
