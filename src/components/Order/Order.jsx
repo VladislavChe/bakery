@@ -19,11 +19,28 @@ const Order = (props) => {
     reValidateMode: 'onChange',
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log('RESULT', data);
-    alert(JSON.stringify(data));
-    reset();
+
     setIsChecked(false);
+
+    const form = document.getElementById('form');
+    let formData = new FormData(form);
+
+    form.classList.add('_sending');
+    let response = await fetch('../../sendmail.php', {
+      method: 'POST',
+      body: formData,
+    });
+    if (response.ok) {
+      let result = await response.json();
+      alert('Успешно');
+      reset();
+      form.classList.remove('_sending');
+    } else {
+      alert('Ошибка');
+      form.classList.remove('_sending');
+    }
   };
 
   const getInputNumbersValue = (input) => {
@@ -109,13 +126,14 @@ const Order = (props) => {
     <div className={styles.order}>
       <h2 className={styles.title}>Оформить заказ</h2>
       <div className={styles.body}>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <form action="#" id="form" onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <label htmlFor="name">
             <input
               {...register('name', { required: 'Введите Имя *', minLength: 2, maxLength: 20 })}
               type="text"
               id="name"
               placeholder="Имя"
+              name="name"
               className={errors?.name && styles.error}
             />
             {/* {errors?.name && <span className={styles.errorMsg}>{errors.name.message}</span>} */}
@@ -127,6 +145,7 @@ const Order = (props) => {
               id="phoneNumber"
               type="phoneNumber"
               placeholder="Телефон"
+              name="phoneNumber"
               onKeyDown={onPhoneKeyDown}
               onPaste={onPhonePaste}
               onChange={(e) => {
@@ -151,6 +170,7 @@ const Order = (props) => {
                 },
               })}
               id="email"
+              name="email"
               type="email"
               placeholder="E-mail"
               className={`${styles.inputEmail} ${errors?.email && styles.error}`}
@@ -167,6 +187,7 @@ const Order = (props) => {
                 <input
                   className={styles.inputCheckbox}
                   type="checkbox"
+                  name="checkbox"
                   checked={isChecked}
                   onChange={() => setIsChecked(!isChecked)}
                 />
