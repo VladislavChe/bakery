@@ -2,16 +2,18 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import CheckMark from '../../img/check-mark.png';
 import Cake from '../../img/order-cake.png';
+import Modal from '../aditional/Modal/Modal';
 import Button from './../aditional/Button/Button';
 import styles from './Order.module.scss';
 
 const Order = (props) => {
   const [isChecked, setIsChecked] = React.useState(false);
   const [isSending, setIsSending] = React.useState(false);
-  const [isType, setIsType] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
 
   const {
     register,
+    getValues,
     formState: { errors },
     handleSubmit,
     reset,
@@ -20,6 +22,8 @@ const Order = (props) => {
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
+
+  const form = React.useRef();
 
   const async_func = () => {
     return new Promise((resolve, reject) => {
@@ -30,45 +34,36 @@ const Order = (props) => {
   };
 
   const onSubmit = async (data) => {
-    console.log('RESULT', data);
+    // console.log('RESULT', data);
 
+    // setIsSending(true);
+    // console.log('Start');
+
+    // const result = await async_func();
+    // console.log(result);
+
+    // console.log('End');
+    // setShowModal(true);
+    // setIsChecked(false);
+    // reset();
+    // setIsSending(false);
+
+    const form = document.getElementById('form');
+
+    let formData = new FormData(form);
     setIsSending(true);
-    console.log('Start');
-
-    const result = await async_func();
-    console.log(result);
-
-    console.log('End');
-    setIsSending(false);
-    reset();
-    setIsType(false);
-
-    // const form = document.getElementById('form');
-    // let formData = new FormData(form);
-
-    // form.classList.add('_sending');
-    // let response = await fetch('../../sendmail.php', {
-    //   method: 'POST',
-    //   body: formData,
-    // });
-    // if (response.ok) {
-    //   let result = await response.json();
-    //   alert('Успешно');
-    //   reset();
-    //   setIsChecked(false);
-    //   setIsSending(false);
-    //   form.classList.remove('_sending');
-    // } else {
-    //   alert('Ошибка');
-    //   form.classList.remove('_sending');
-    // }
-  };
-
-  const onTyping = (e) => {
-    let input = e.target;
-
-    if (input.value != '') {
-      setIsType(true);
+    let response = await fetch('../../sendmail.php', {
+      method: 'POST',
+      body: formData,
+    });
+    if (response.ok) {
+      let result = await response.json();
+      setShowModal(true);
+      setIsChecked(false);
+      reset();
+      setIsSending(false);
+    } else {
+      alert('Ошибка');
     }
   };
 
@@ -150,33 +145,40 @@ const Order = (props) => {
     minLength: 17,
     message: 'Пожалуйста введите валидный Телефон *',
   });
-  const nameRegister = register('name', {
-    required: 'Введите Имя *',
-    minLength: 2,
-    message: 'Пожалуйста введите валидное Имя *',
-  });
 
   return (
     <div className={styles.order}>
       <h2 className={styles.title}>Оформить заказ</h2>
       <div className={styles.body}>
-        <form action="#" id="form" onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <form
+          ref={form}
+          action="#"
+          id="form"
+          onSubmit={handleSubmit(onSubmit)}
+          className={`${styles.form} ${isSending && styles.sending}`}>
           <label htmlFor="name">
             <input
-              {...nameRegister}
+              {...register('name', {
+                required: 'Введите Имя *',
+                minLength: 2,
+                pattern: {
+                  value: /^\S+$/,
+                  message: 'Пожалуйста введите валидное Имя *',
+                },
+              })}
               type="text"
               id="name"
               placeholder="Имя"
               name="name"
-              onChange={(e) => {
-                nameRegister.onChange(e);
-                onTyping(e);
-              }}
               className={
-                errors?.name ? styles.error : isType && !errors?.name ? styles.correct : null
+                errors?.name
+                  ? styles.error
+                  : getValues('name') && !errors?.name
+                  ? styles.correct
+                  : null
               }
             />
-            {isType && !errors?.name ? (
+            {getValues('name') && !errors?.name ? (
               <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
             ) : null}
             {/* {errors?.name && <span className={styles.errorMsg}>{errors.name.message}</span>} */}
@@ -195,8 +197,17 @@ const Order = (props) => {
                 phoneNumberRegister.onChange(e);
                 onPhoneInput(e);
               }}
-              className={errors?.phoneNumber && styles.error}
+              className={
+                errors?.phoneNumber
+                  ? styles.error
+                  : getValues('phoneNumber') && !errors?.phoneNumber
+                  ? styles.correct
+                  : null
+              }
             />
+            {getValues('phoneNumber') && !errors?.phoneNumber ? (
+              <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
+            ) : null}
             {/* {errors?.phoneNumber && (
               <span className={styles.errorMsg}>{errors.phoneNumber.message}</span>
             )} */}
@@ -216,8 +227,17 @@ const Order = (props) => {
               name="email"
               type="email"
               placeholder="E-mail"
-              className={`${styles.inputEmail} ${errors?.email && styles.error}`}
+              className={`${styles.inputEmail} ${
+                errors?.email
+                  ? styles.error
+                  : getValues('email') && !errors?.email
+                  ? styles.correct
+                  : null
+              }`}
             />
+            {getValues('email') && !errors?.email ? (
+              <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
+            ) : null}
             {/* {errors?.email && <span className={styles.errorMsg}>{errors.email.message}</span>} */}
           </label>
 
@@ -253,6 +273,7 @@ const Order = (props) => {
 
         <img className={styles.cake} src={Cake} alt="Cake" />
       </div>
+      <Modal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

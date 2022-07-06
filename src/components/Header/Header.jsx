@@ -1,3 +1,4 @@
+import { Link } from 'react-scroll';
 import Blueberries1 from '../../img/blueberries1.png';
 import Blueberries21 from '../../img/blueberries2-1.png';
 import Blueberries22 from '../../img/blueberries2-2.png';
@@ -24,7 +25,9 @@ const Header = (props) => {
           <p className={styles.text}>
             Натуральные и вкусные чизкейки для Вас с бесплатной доставкой по Москве
           </p>
-          <Button />
+          <Link to="order" spy={true} smooth={true} offset={0} duration={500}>
+            <Button />
+          </Link>
         </div>
         <div className={styles.cakeWrapp}>
           <div className={styles.cake}>

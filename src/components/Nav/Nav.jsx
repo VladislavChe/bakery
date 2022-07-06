@@ -7,37 +7,51 @@ import styles from './Nav.module.scss';
 const Nav = (props) => {
   const [active, setActive] = React.useState(false);
 
+  const hamburgerMenuRef = React.useRef();
+
+  React.useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+  }, []);
+
+  const handleOutsideClick = (e) => {
+    if (!e.path.includes(hamburgerMenuRef.current)) {
+      setActive(false);
+    }
+  };
+
   return (
     <div>
       <nav className={`${styles.nav} ${styles[`nav--${props.theme}`]}`}>
         <img className={styles.logo} src={Logo} alt="logo" />
-        <ul className={`${styles.navMenu} ${active && styles.navMenuActive}`}>
-          <li>
-            <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
-              О нас
-            </Link>
-          </li>
-          <li>
-            <Link to="assortment" spy={true} smooth={true} offset={0} duration={500}>
-              Ассортимент
-            </Link>
-          </li>
-          <li>
-            <Link to="feedback" spy={true} smooth={true} offset={0} duration={500}>
-              Отзывы
-            </Link>
-          </li>
-          <li>
-            <Link to="advantages" spy={true} smooth={true} offset={-50} duration={500}>
-              Доставка
-            </Link>
-          </li>
-          <li>
-            <Link to="order" spy={true} smooth={true} offset={0} duration={500}>
-              Контакты
-            </Link>
-          </li>
-        </ul>
+        {props.theme === 'header' && (
+          <ul className={`${styles.navMenu} ${active && styles.navMenuActive}`}>
+            <li>
+              <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
+                О нас
+              </Link>
+            </li>
+            <li>
+              <Link to="assortment" spy={true} smooth={true} offset={0} duration={500}>
+                Ассортимент
+              </Link>
+            </li>
+            <li>
+              <Link to="feedback" spy={true} smooth={true} offset={0} duration={500}>
+                Отзывы
+              </Link>
+            </li>
+            <li>
+              <Link to="advantages" spy={true} smooth={true} offset={-50} duration={500}>
+                Доставка
+              </Link>
+            </li>
+            <li>
+              <Link to="order" spy={true} smooth={true} offset={0} duration={500}>
+                Контакты
+              </Link>
+            </li>
+          </ul>
+        )}
         <div className={`${styles.callbackBlock} ${styles[`callbackBlock--${props.theme}`]}`}>
           <div>
             <Phone />
@@ -74,6 +88,7 @@ const Nav = (props) => {
         </div>
         {props.theme === 'header' && (
           <div
+            ref={hamburgerMenuRef}
             className={`${styles.hamburger} ${active ? styles.hamburgerActive : ''}`}
             onClick={() => setActive(!active)}>
             <div className={styles.centerLine}></div>

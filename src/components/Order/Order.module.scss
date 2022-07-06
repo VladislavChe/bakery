@@ -13,17 +13,20 @@
 }
 
 .form {
+  position: relative;
   width: 620px;
   margin-top: 95px;
 
   label {
     position: relative;
+    display: flex;
+    // max-height: 58px;
+    margin-bottom: 24px;
   }
 
   input {
     width: 100%;
     padding: 20px 29px;
-    margin-bottom: 24px;
 
     background: $lightBlue;
     border: 1px solid $blue;
@@ -38,6 +41,13 @@
     }
     &.correct {
       background: #fff;
+    }
+  }
+
+  &.sending {
+    input {
+      background: rgb(236, 236, 236);
+      border: 1px solid rgb(236, 236, 236);
     }
   }
 
@@ -136,6 +146,7 @@
 
     label {
       width: 100%;
+      max-height: auto;
     }
   }
   .checkboxWrapp {

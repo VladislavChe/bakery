@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-scroll';
 import Button from '../../aditional/Button/Button';
 import styles from './AssortmentCard.module.scss';
 
@@ -14,7 +14,9 @@ const AssortmentCard = ({ img, title, description, price }) => {
         <div className={styles.price}>
           <span>{price} руб.</span>
           <div className={styles.button}>
-            <Button />
+            <Link to="order" spy={true} smooth={true} offset={0} duration={500}>
+              <Button />
+            </Link>
           </div>
         </div>
       </div>
