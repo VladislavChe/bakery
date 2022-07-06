@@ -36,6 +36,17 @@
       background: #ffe3e3;
       color: $black;
     }
+    &.correct {
+      background: #fff;
+    }
+  }
+
+  .ok {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-right: 30px;
+    transform: translateY(-50%);
   }
 }
 

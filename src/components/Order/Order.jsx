@@ -7,6 +7,8 @@ import styles from './Order.module.scss';
 
 const Order = (props) => {
   const [isChecked, setIsChecked] = React.useState(false);
+  const [isSending, setIsSending] = React.useState(false);
+  const [isType, setIsType] = React.useState(false);
 
   const {
     register,
@@ -19,27 +21,54 @@ const Order = (props) => {
     reValidateMode: 'onChange',
   });
 
+  const async_func = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Sending...');
+      }, 2000);
+    });
+  };
+
   const onSubmit = async (data) => {
     console.log('RESULT', data);
 
-    setIsChecked(false);
+    setIsSending(true);
+    console.log('Start');
 
-    const form = document.getElementById('form');
-    let formData = new FormData(form);
+    const result = await async_func();
+    console.log(result);
 
-    form.classList.add('_sending');
-    let response = await fetch('../../sendmail.php', {
-      method: 'POST',
-      body: formData,
-    });
-    if (response.ok) {
-      let result = await response.json();
-      alert('Успешно');
-      reset();
-      form.classList.remove('_sending');
-    } else {
-      alert('Ошибка');
-      form.classList.remove('_sending');
+    console.log('End');
+    setIsSending(false);
+    reset();
+    setIsType(false);
+
+    // const form = document.getElementById('form');
+    // let formData = new FormData(form);
+
+    // form.classList.add('_sending');
+    // let response = await fetch('../../sendmail.php', {
+    //   method: 'POST',
+    //   body: formData,
+    // });
+    // if (response.ok) {
+    //   let result = await response.json();
+    //   alert('Успешно');
+    //   reset();
+    //   setIsChecked(false);
+    //   setIsSending(false);
+    //   form.classList.remove('_sending');
+    // } else {
+    //   alert('Ошибка');
+    //   form.classList.remove('_sending');
+    // }
+  };
+
+  const onTyping = (e) => {
+    let input = e.target;
+
+    if (input.value != '') {
+      setIsType(true);
     }
   };
 
@@ -116,10 +145,15 @@ const Order = (props) => {
     }
   };
 
-  const productImageRegister = register('phoneNumber', {
+  const phoneNumberRegister = register('phoneNumber', {
     required: 'Введите Телефон *',
     minLength: 17,
     message: 'Пожалуйста введите валидный Телефон *',
+  });
+  const nameRegister = register('name', {
+    required: 'Введите Имя *',
+    minLength: 2,
+    message: 'Пожалуйста введите валидное Имя *',
   });
 
   return (
@@ -129,19 +163,28 @@ const Order = (props) => {
         <form action="#" id="form" onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <label htmlFor="name">
             <input
-              {...register('name', { required: 'Введите Имя *', minLength: 2, maxLength: 20 })}
+              {...nameRegister}
               type="text"
               id="name"
               placeholder="Имя"
               name="name"
-              className={errors?.name && styles.error}
+              onChange={(e) => {
+                nameRegister.onChange(e);
+                onTyping(e);
+              }}
+              className={
+                errors?.name ? styles.error : isType && !errors?.name ? styles.correct : null
+              }
             />
+            {isType && !errors?.name ? (
+              <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
+            ) : null}
             {/* {errors?.name && <span className={styles.errorMsg}>{errors.name.message}</span>} */}
           </label>
 
           <label htmlFor="phoneNumber">
             <input
-              {...productImageRegister}
+              {...phoneNumberRegister}
               id="phoneNumber"
               type="phoneNumber"
               placeholder="Телефон"
@@ -149,7 +192,7 @@ const Order = (props) => {
               onKeyDown={onPhoneKeyDown}
               onPaste={onPhonePaste}
               onChange={(e) => {
-                productImageRegister.onChange(e);
+                phoneNumberRegister.onChange(e);
                 onPhoneInput(e);
               }}
               className={errors?.phoneNumber && styles.error}
@@ -205,7 +248,7 @@ const Order = (props) => {
             )}
           />
 
-          <Button />
+          <Button isSending={isSending} />
         </form>
 
         <img className={styles.cake} src={Cake} alt="Cake" />
