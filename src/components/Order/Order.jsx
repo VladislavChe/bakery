@@ -146,6 +146,14 @@ const Order = (props) => {
     message: 'Пожалуйста введите валидный Телефон *',
   });
 
+  const inputClassName = (name) => {
+    return errors?.[name]
+      ? styles.error
+      : getValues(name) && !errors?.[name]
+      ? styles.correct
+      : null;
+  };
+
   return (
     <div className={styles.order}>
       <h2 className={styles.title}>Оформить заказ</h2>
@@ -170,13 +178,7 @@ const Order = (props) => {
               id="name"
               placeholder="Имя"
               name="name"
-              className={
-                errors?.name
-                  ? styles.error
-                  : getValues('name') && !errors?.name
-                  ? styles.correct
-                  : null
-              }
+              className={inputClassName('name')}
             />
             {getValues('name') && !errors?.name ? (
               <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
@@ -197,13 +199,7 @@ const Order = (props) => {
                 phoneNumberRegister.onChange(e);
                 onPhoneInput(e);
               }}
-              className={
-                errors?.phoneNumber
-                  ? styles.error
-                  : getValues('phoneNumber') && !errors?.phoneNumber
-                  ? styles.correct
-                  : null
-              }
+              className={inputClassName('phoneNumber')}
             />
             {getValues('phoneNumber') && !errors?.phoneNumber ? (
               <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
@@ -227,13 +223,7 @@ const Order = (props) => {
               name="email"
               type="email"
               placeholder="E-mail"
-              className={`${styles.inputEmail} ${
-                errors?.email
-                  ? styles.error
-                  : getValues('email') && !errors?.email
-                  ? styles.correct
-                  : null
-              }`}
+              className={`${styles.inputEmail} ${inputClassName('email')}`}
             />
             {getValues('email') && !errors?.email ? (
               <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
@@ -255,7 +245,7 @@ const Order = (props) => {
                   onChange={() => setIsChecked(!isChecked)}
                 />
                 {!isChecked ? (
-                  <span className={styles.checkbox}></span>
+                  <span className={styles.checkbox} />
                 ) : (
                   <img className={styles.checked} src={CheckMark} alt="CheckMark" />
                 )}
@@ -270,8 +260,14 @@ const Order = (props) => {
 
           <Button isSending={isSending} />
         </form>
-
-        <img className={styles.cake} src={Cake} alt="Cake" />
+        <div className={styles.cake}>
+          <img className={styles.cake__img} src={Cake} alt="Cake" />
+          <img
+            className={styles.cake__bg}
+            src={require('../../img/blotter.png')}
+            alt="background"
+          />
+        </div>
       </div>
       <Modal showModal={showModal} setShowModal={setShowModal} />
     </div>

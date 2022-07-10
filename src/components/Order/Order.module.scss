@@ -14,8 +14,10 @@
 
 .form {
   position: relative;
-  width: 620px;
+  width: 50%;
+  max-width: 620px;
   margin-top: 95px;
+  z-index: 1;
 
   label {
     position: relative;
@@ -122,13 +124,36 @@
 }
 
 .cake {
-  margin-top: 30px;
+  position: relative;
+  width: 50%;
+
+  &__img {
+    position: relative;
+    margin-top: 0;
+    width: 100%;
+    max-width: 687px;
+    max-height: 515px;
+    z-index: 1;
+  }
+
+  &__bg {
+    position: absolute;
+    top: -250px;
+    right: -828px;
+    width: 1421px;
+    height: 1540px;
+    max-width: 1421px;
+    z-index: 0;
+    transform: rotate(10deg);
+  }
 }
 
 /* 992px - 1200px */
 @media screen and (max-width: 1200px) {
   .cake {
-    width: 50%;
+    &__bg {
+      top: -300px;
+    }
   }
 }
 
@@ -136,6 +161,7 @@
 @media screen and (max-width: 992px) {
   .body {
     flex-direction: column;
+    align-items: center;
   }
   .form {
     display: flex;
@@ -143,6 +169,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 35px;
 
     label {
       width: 100%;
@@ -153,6 +180,8 @@
     margin-bottom: 40px;
   }
   .cake {
+    display: flex;
+    justify-content: center;
     width: 100%;
     margin-top: 75px;
   }
@@ -162,5 +191,18 @@
 @media screen and (max-width: 768px) {
   .form {
     margin-top: 35px;
+  }
+}
+
+/* 320px - 450px */
+@media screen and (max-width: 450px) {
+  .cake {
+    &__bg {
+      top: -158px;
+      right: -460px;
+      width: 845px;
+      height: 916px;
+      max-width: 845px;
+    }
   }
 }

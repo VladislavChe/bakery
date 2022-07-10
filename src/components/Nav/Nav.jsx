@@ -20,41 +20,40 @@ const Nav = (props) => {
   };
 
   return (
-    <div>
+    <>
       <nav className={`${styles.nav} ${styles[`nav--${props.theme}`]}`}>
         <img className={styles.logo} src={Logo} alt="logo" />
-        {props.theme === 'header' && (
-          <ul className={`${styles.navMenu} ${active && styles.navMenuActive}`}>
-            <li>
-              <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
-                О нас
-              </Link>
-            </li>
-            <li>
-              <Link to="assortment" spy={true} smooth={true} offset={0} duration={500}>
-                Ассортимент
-              </Link>
-            </li>
-            <li>
-              <Link to="feedback" spy={true} smooth={true} offset={0} duration={500}>
-                Отзывы
-              </Link>
-            </li>
-            <li>
-              <Link to="advantages" spy={true} smooth={true} offset={-50} duration={500}>
-                Доставка
-              </Link>
-            </li>
-            <li>
-              <Link to="order" spy={true} smooth={true} offset={0} duration={500}>
-                Контакты
-              </Link>
-            </li>
-          </ul>
-        )}
+        <ul className={`${styles.navMenu} ${active ? styles.navMenuActive : ''}`}>
+          <li>
+            <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
+              О нас
+            </Link>
+          </li>
+          <li>
+            <Link to="assortment" spy={true} smooth={true} offset={0} duration={500}>
+              Ассортимент
+            </Link>
+          </li>
+          <li>
+            <Link to="feedback" spy={true} smooth={true} offset={0} duration={500}>
+              Отзывы
+            </Link>
+          </li>
+          <li>
+            <Link to="advantages" spy={true} smooth={true} offset={-50} duration={500}>
+              Доставка
+            </Link>
+          </li>
+          <li>
+            <Link to="order" spy={true} smooth={true} offset={0} duration={500}>
+              Контакты
+            </Link>
+          </li>
+        </ul>
+
         <div className={`${styles.callbackBlock} ${styles[`callbackBlock--${props.theme}`]}`}>
-          <div>
-            <Phone />
+          <div className={props.theme === 'footer' ? styles.number : ''}>
+            {props.theme === 'header' && <Phone />}
             <a href="tel:88009998877">8 (800) 999 88 77</a>
           </div>
           {props.theme === 'header' && (
@@ -95,7 +94,7 @@ const Nav = (props) => {
           </div>
         )}
       </nav>
-    </div>
+    </>
   );
 };
 

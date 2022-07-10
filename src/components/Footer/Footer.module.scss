@@ -1,6 +1,7 @@
 @import '../../styles/vars';
 
 .footer {
+  position: relative;
   padding-bottom: 12px;
 
   nav {
@@ -9,13 +10,14 @@
 }
 
 .copyright {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 10px;
+  z-index: 7;
 
   a {
-    display: block;
     font-size: 16px;
     font-weight: 400;
 
@@ -25,6 +27,10 @@
     &:hover {
       border-bottom: 1px solid $lightBlack;
       transition: $time;
+    }
+
+    &:first-of-type {
+      margin-right: 30px;
     }
   }
 }
@@ -47,5 +53,13 @@
     .textDev {
       font-size: 14px;
     }
+  }
+}
+
+/* 320px - 576px */
+@media screen and (max-width: 576px) {
+  .links {
+    display: flex;
+    flex-direction: column;
   }
 }

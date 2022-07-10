@@ -1,7 +1,6 @@
 @import '../../styles/vars';
 
 .header {
-  height: 90vh;
   padding-top: 30px;
 }
 
@@ -19,60 +18,71 @@
 }
 
 .offer {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 70px;
+  z-index: 2;
 }
 
 .inner {
-  max-width: 683px;
+  position: relative;
+  width: 45%;
+  z-index: 2;
+}
+
+.blotterInner {
+  display: none;
 }
 
 .title {
+  position: relative;
   max-width: 683px;
   margin-bottom: 10px;
 
   font-family: $Amatic;
+  z-index: 2;
 }
 
 .text {
+  position: relative;
   max-width: 490px;
   margin-bottom: 65px;
+
+  z-index: 2;
+}
+
+.innerBtn {
+  position: relative;
+  z-index: 2;
 }
 
 .cakeWrapp {
+  position: relative;
   display: flex;
   justify-content: flex-start;
-  max-width: 845px;
-  max-height: 845px;
-  width: 53%;
-  height: 50%;
-  margin-top: -20px;
+  width: 55%;
 }
 
 .cake {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
   height: 100%;
-  margin-right: -70px;
-  padding: 15px;
-}
 
-.cakeImg {
-  width: 655px;
-  height: 655px;
+  z-index: 1;
 }
 
 .firstOrbite {
-  width: 88%;
+  width: 80%;
   height: 0;
-  padding-bottom: 88%;
-  margin-top: -44%;
-  margin-left: -44%;
+  padding-bottom: 80%;
+  margin-top: -40%;
+  margin-left: -40%;
 
   animation: spin-right 50s linear infinite;
   -webkit-animation: spin-right 50s linear infinite;
@@ -88,11 +98,11 @@
 }
 
 .secondOrbite {
-  width: 100%;
+  width: 91%;
   height: 0;
-  padding-bottom: 100%;
-  margin-top: -50%;
-  margin-left: -50%;
+  padding-bottom: 91%;
+  margin-top: -45.5%;
+  margin-left: -45.5%;
 
   animation: spin-right 60s linear infinite;
   -webkit-animation: spin-right 60s linear infinite;
@@ -106,6 +116,7 @@
 
   border: 1px solid #97ceff;
   border-radius: 50%;
+  z-index: 1;
 }
 
 .blueberries21,
@@ -147,8 +158,19 @@
 .bigCake {
   max-width: 655px;
   max-height: 655px;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
+  z-index: 1;
+}
+
+.blotter {
+  position: absolute;
+  top: -737px;
+  right: -518px;
+  width: 1421px;
+  height: 1540px;
+  max-width: 1421px;
+  z-index: 0;
 }
 
 @keyframes spin-right {
@@ -165,9 +187,6 @@
 
 /* 1550px - 1700px */
 @media screen and (max-width: 1700px) {
-  .cake {
-    margin-right: 0;
-  }
 }
 
 /* 1200px - 1550px */
@@ -191,11 +210,13 @@
   .blueberries21Top {
     display: block;
     position: absolute;
-    top: 20%;
+    top: 12%;
     right: 29%;
     width: 43px;
     height: 37px;
+
     transform: rotate(155deg);
+    z-index: 3;
   }
   .blueberries22Top {
     display: block;
@@ -204,6 +225,8 @@
     right: 3%;
     width: 59px;
     height: 50px;
+
+    z-index: 3;
     transform: rotate(-96deg);
   }
   .blueberries23Top {
@@ -213,6 +236,8 @@
     right: 11%;
     width: 35px;
     height: 30px;
+
+    z-index: 3;
     transform: rotate(-110deg);
   }
   .srawberries {
@@ -222,9 +247,28 @@
     right: -5%;
     width: 100px;
     height: 124px;
+    z-index: 3;
+  }
+  .inner {
+    width: 100%;
+  }
+  .blotterInner {
+    display: block;
+    position: absolute;
+    top: -361px;
+    right: -468px;
+    width: 711px;
+    height: 770px;
+    max-width: 711px;
+    z-index: 0;
   }
   .cakeWrapp {
     display: none;
+  }
+  .blotter {
+    width: 488px;
+    height: 529px;
+    max-width: 488px;
   }
   .inner {
     max-width: 500px;
@@ -234,11 +278,11 @@
     margin-bottom: 0;
   }
   .text {
-    margin: 30px auto;
+    margin: 20px auto 30px auto;
   }
 }
 
-/* 320px - 576px */
+/* 450px - 576px */
 @media screen and (max-width: 576px) {
   .offer {
     justify-content: flex-start;
@@ -249,12 +293,33 @@
   }
   .text {
     max-width: 490px;
-    margin-bottom: 65px;
+    margin-bottom: 40px;
   }
   .blueberries21Top {
-    top: 28%;
+    top: 8%;
+    right: 29%;
+  }
+  .blueberries22Top {
+    top: 15%;
+    right: 3%;
+  }
+  .blueberries23Top {
+    top: 30%;
+    right: 11%;
   }
   .srawberries {
-    right: -45px;
+    top: 38%;
+    right: -5%;
+  }
+}
+
+/* 320px - 450px */
+@media screen and (max-width: 450px) {
+  .blotterInner {
+    top: -261px;
+    right: -308px;
+    width: 488.62px;
+    height: 529.62px;
+    max-width: 488.62px;
   }
 }

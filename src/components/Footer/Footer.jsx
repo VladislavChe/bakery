@@ -12,20 +12,22 @@ const Footer = (props) => {
           alt="copyright-icon"
         />
         <div>
-          <a
-            target="_blank"
-            href="https://instagram.com/tatyana.shillova/"
-            className={styles.text}
-            rel="noreferrer">
-            Designed by @tatyana.shillova
-          </a>
-          <a
-            target="_blank"
-            href="https://vk.com/vladislav___che"
-            className={styles.textDev}
-            rel="noreferrer">
-            Development by @che_vladislav
-          </a>
+          <div className={styles.links}>
+            <a
+              target="_blank"
+              href="https://instagram.com/tatyana.shillova/"
+              className={styles.text}
+              rel="noreferrer">
+              Designed by @tatyana.shillova
+            </a>
+            <a
+              target="_blank"
+              href="https://vk.com/vladislav___che"
+              className={styles.textDev}
+              rel="noreferrer">
+              Development by @che_vladislav
+            </a>
+          </div>
         </div>
       </div>
     </div>
