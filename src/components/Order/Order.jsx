@@ -35,37 +35,37 @@ const Order = (props) => {
   };
 
   const onSubmit = async (data) => {
-    console.log('RESULT', data);
+    // console.log('RESULT', data);
 
-    setIsSending(true);
-    console.log('Start');
-
-    const result = await async_func();
-    console.log(result);
-
-    console.log('End');
-    setShowModal(true);
-    setIsChecked(false);
-    reset();
-    setIsSending(false);
-
-    // const form = document.getElementById('form');
-
-    // let formData = new FormData(form);
     // setIsSending(true);
-    // let response = await fetch('../../sendmail.php', {
-    //   method: 'POST',
-    //   body: formData,
-    // });
-    // if (response.ok) {
-    //   let result = await response.json();
-    //   setShowModal(true);
-    //   setIsChecked(false);
-    //   reset();
-    //   setIsSending(false);
-    // } else {
-    //   alert('Ошибка');
-    // }
+    // console.log('Start');
+
+    // const result = await async_func();
+    // console.log(result);
+
+    // console.log('End');
+    // setShowModal(true);
+    // setIsChecked(false);
+    // reset();
+    // setIsSending(false);
+
+    const form = document.getElementById('form');
+
+    let formData = new FormData(form);
+    setIsSending(true);
+    let response = await fetch('../../sendmail.php', {
+      method: 'POST',
+      body: formData,
+    });
+    if (response.ok) {
+      let result = await response.json();
+      setShowModal(true);
+      setIsChecked(false);
+      reset();
+      setIsSending(false);
+    } else {
+      alert('Ошибка');
+    }
   };
 
   const getInputNumbersValue = (input) => {

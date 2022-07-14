@@ -1,12 +1,9 @@
-import React from 'react';
 import styles from './Assortment.module.scss';
 import AssortmentCard from './AssortmentCard/AssortmentCard';
 
 const Assortment = ({ assortment, limit, setLimit }) => {
   const showMore = () => {
     setLimit(limit + 3);
-
-    console.log(assortment.slice(0, limit).length);
   };
   return (
     <div className={styles.assortment}>
