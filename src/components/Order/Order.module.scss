@@ -105,8 +105,10 @@
 }
 
 .checked {
-  width: 22px;
-  height: 22px;
+  max-width: 22px;
+  max-height: 22px;
+  min-width: 22px;
+  min-height: 22px;
   margin-top: 7px;
   margin-right: 14px;
 }
