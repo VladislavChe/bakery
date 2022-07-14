@@ -88,20 +88,30 @@
   .about {
     width: 100%;
   }
-  .description {
-    width: 100%;
-    max-width: 100%;
-  }
   .textFirst {
     max-width: 670px;
   }
   .textSecond {
     max-width: 100%;
   }
+  .photos {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding-left: 0;
+  }
+  .photoCake {
+    position: static;
+    margin-bottom: 30px;
+  }
 }
 
 /* 576px - 768px */
 @media screen and (max-width: 768px) {
+  .description {
+    width: 100%;
+  }
   .title {
     text-align: center;
   }

@@ -6,30 +6,6 @@ import 'slick-carousel/slick/slick.css';
 import styles from './Feedback.module.scss';
 import FeedbackCard from './FeedbackCard/FeedbackCard';
 
-// const SimpleSlider2 = ({ feedback }) => {
-//   const settings = {
-//     dots: false,
-//     infinite: true,
-//     slidesToShow: 2,
-//     slidesToScroll: 2,
-//   };
-
-//   return (
-//     <div className={styles.feedback}>
-//       <h2 className={styles.title}>ОТЗЫВЫ НАШИХ КЛИЕНТОВ</h2>
-//       <Slider {...settings}>
-//         {feedback.map((item, index) => (
-//           <div key={index}>
-//             <FeedbackCard item={item} />
-//           </div>
-//         ))}
-//       </Slider>
-//     </div>
-//   );
-// };
-
-// export default SimpleSlider2;
-
 export default class SimpleSlider extends Component {
   render() {
     const settings = {
@@ -51,24 +27,6 @@ export default class SimpleSlider extends Component {
           },
         },
       ],
-      // appendDots: (dots) => (
-      //   <div
-      //     style={{
-      //       padding: '0px',
-      //     }}>
-      //     <ul style={{ margin: '7px' }}> {dots} </ul>
-      //   </div>
-      // ),
-      // customPaging: (i) => (
-      //   <div
-      //     style={{
-      //       width: '9px',
-      //       height: '9px',
-      //       color: 'blue',
-      //       borderRadius: '50%',
-      //       border: '1px solid red',
-      //     }}></div>
-      // ),
     };
 
     return (

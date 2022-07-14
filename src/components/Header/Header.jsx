@@ -24,6 +24,7 @@ const Header = (props) => {
             Натуральные и вкусные чизкейки для Вас с бесплатной доставкой по Москве
           </p>
           <Link
+            href="order"
             className={styles.innerBtn}
             to="order"
             spy={true}

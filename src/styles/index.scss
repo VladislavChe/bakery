@@ -5,6 +5,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  min-width: 320px;
 
   font-family: $mainFont;
   -webkit-font-smoothing: antialiased;
@@ -111,9 +112,7 @@ input {
   padding: 0;
 
   list-style-type: none;
-
   box-sizing: border-box;
-  cursor: pointer;
   outline: none;
   transition: all 0.2s ease-in-out;
   &:active,
@@ -135,9 +134,9 @@ li {
 }
 
 .container {
-  max-width: 1560px;
+  max-width: 1650px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 60px;
 }
 
 img {
@@ -205,6 +204,7 @@ img {
 .footer {
   position: relative;
   z-index: 1;
+  margin-top: 155px;
 }
 
 /*******************************************************************/
@@ -297,13 +297,13 @@ img {
 /* Стрелка влево */
 .slick-arrow.slick-prev {
   left: 0;
-  background: url(../img/prev-arrow.png) no-repeat center;
+  background: url(../img/prev-arrow.svg) no-repeat center;
   z-index: 1;
 }
 /* Стрелка вправо */
 .slick-arrow.slick-next {
   right: 0;
-  background: url(../img/next-arrow.png) no-repeat center;
+  background: url(../img/next-arrow.svg) no-repeat center;
 }
 /* Стрелка не активная */
 .slick-arrow.slick-disabled {
@@ -360,6 +360,9 @@ img {
 
 /* 768px - 992px */
 @media screen and (max-width: 992px) {
+  .container {
+    padding: 0 40px;
+  }
   .advantages {
     margin-top: 150px;
   }
@@ -411,10 +414,16 @@ img {
       width: 100% !important;
     }
   }
+  .footer {
+    margin-top: 80px;
+  }
 }
 
 /* 576px - 768px */
 @media screen and (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
   .slick-slider {
     width: 100%;
   }

@@ -6,11 +6,7 @@ const Footer = (props) => {
     <div className={styles.footer}>
       <Nav theme={'footer'} />
       <div className={styles.copyright}>
-        <img
-          className={styles.icon}
-          src={require('../../img/copyright-icon.png')}
-          alt="copyright-icon"
-        />
+        <span className={styles.icon}>©</span>
         <div>
           <div className={styles.links}>
             <a

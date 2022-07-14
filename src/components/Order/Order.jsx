@@ -1,6 +1,7 @@
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import CheckMark from '../../img/check-mark.png';
+import { ReactComponent as CheckMark } from '../../img/check mark.svg';
+import { ReactComponent as Ok } from '../../img/ok.svg';
 import Cake from '../../img/order-cake.png';
 import Modal from '../aditional/Modal/Modal';
 import Button from './../aditional/Button/Button';
@@ -34,37 +35,37 @@ const Order = (props) => {
   };
 
   const onSubmit = async (data) => {
-    // console.log('RESULT', data);
+    console.log('RESULT', data);
 
-    // setIsSending(true);
-    // console.log('Start');
-
-    // const result = await async_func();
-    // console.log(result);
-
-    // console.log('End');
-    // setShowModal(true);
-    // setIsChecked(false);
-    // reset();
-    // setIsSending(false);
-
-    const form = document.getElementById('form');
-
-    let formData = new FormData(form);
     setIsSending(true);
-    let response = await fetch('../../sendmail.php', {
-      method: 'POST',
-      body: formData,
-    });
-    if (response.ok) {
-      let result = await response.json();
-      setShowModal(true);
-      setIsChecked(false);
-      reset();
-      setIsSending(false);
-    } else {
-      alert('Ошибка');
-    }
+    console.log('Start');
+
+    const result = await async_func();
+    console.log(result);
+
+    console.log('End');
+    setShowModal(true);
+    setIsChecked(false);
+    reset();
+    setIsSending(false);
+
+    // const form = document.getElementById('form');
+
+    // let formData = new FormData(form);
+    // setIsSending(true);
+    // let response = await fetch('../../sendmail.php', {
+    //   method: 'POST',
+    //   body: formData,
+    // });
+    // if (response.ok) {
+    //   let result = await response.json();
+    //   setShowModal(true);
+    //   setIsChecked(false);
+    //   reset();
+    //   setIsSending(false);
+    // } else {
+    //   alert('Ошибка');
+    // }
   };
 
   const getInputNumbersValue = (input) => {
@@ -180,9 +181,7 @@ const Order = (props) => {
               name="name"
               className={inputClassName('name')}
             />
-            {getValues('name') && !errors?.name ? (
-              <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
-            ) : null}
+            {getValues('name') && !errors?.name ? <Ok className={styles.ok} /> : null}
             {/* {errors?.name && <span className={styles.errorMsg}>{errors.name.message}</span>} */}
           </label>
 
@@ -201,9 +200,7 @@ const Order = (props) => {
               }}
               className={inputClassName('phoneNumber')}
             />
-            {getValues('phoneNumber') && !errors?.phoneNumber ? (
-              <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
-            ) : null}
+            {getValues('phoneNumber') && !errors?.phoneNumber ? <Ok className={styles.ok} /> : null}
             {/* {errors?.phoneNumber && (
               <span className={styles.errorMsg}>{errors.phoneNumber.message}</span>
             )} */}
@@ -225,9 +222,7 @@ const Order = (props) => {
               placeholder="E-mail"
               className={`${styles.inputEmail} ${inputClassName('email')}`}
             />
-            {getValues('email') && !errors?.email ? (
-              <img className={styles.ok} src={require('../../img/ok.png')} alt="correct-icon" />
-            ) : null}
+            {getValues('email') && !errors?.email ? <Ok className={styles.ok} /> : null}
             {/* {errors?.email && <span className={styles.errorMsg}>{errors.email.message}</span>} */}
           </label>
 
@@ -236,7 +231,7 @@ const Order = (props) => {
             control={control}
             rules={{ required: 'Требуется соглашение *' }}
             render={({ field }) => (
-              <label {...field} className={styles.checkboxWrapp}>
+              <label {...field} className={styles.CheckboxLabel}>
                 <input
                   className={styles.inputCheckbox}
                   type="checkbox"
@@ -244,15 +239,20 @@ const Order = (props) => {
                   checked={isChecked}
                   onChange={() => setIsChecked(!isChecked)}
                 />
-                {!isChecked ? (
-                  <span className={styles.checkbox} />
-                ) : (
-                  <img className={styles.checked} src={CheckMark} alt="CheckMark" />
-                )}
-                <p
-                  className={`${styles.checkBoxText} ${errors?.check && styles.errorCheckBoxText}`}>
-                  Я согласен(-на) на обработку моих персональных данных <span>*</span>
-                </p>
+                <div className={styles.checkboxWrapp}>
+                  {!isChecked ? (
+                    <span className={styles.checkbox} />
+                  ) : (
+                    <CheckMark className={styles.checked} />
+                  )}
+                  <p
+                    className={`${styles.checkBoxText} ${
+                      errors?.check && styles.errorCheckBoxText
+                    }`}>
+                    Я согласен(-на) на обработку моих персональных данных <span>*</span>
+                  </p>
+                </div>
+
                 {/* {errors?.check && <span className={styles.errorMsg}>{errors.check.message}</span>} */}
               </label>
             )}

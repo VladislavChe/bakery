@@ -1,7 +1,6 @@
 @import '../../styles/vars';
 
 .order {
-  padding-bottom: 155px;
 }
 
 .title {
@@ -13,6 +12,7 @@
 }
 
 .form {
+  display: block;
   position: relative;
   width: 50%;
   max-width: 620px;
@@ -20,9 +20,8 @@
   z-index: 1;
 
   label {
+    display: block;
     position: relative;
-    display: flex;
-    // max-height: 58px;
     margin-bottom: 24px;
   }
 
@@ -66,9 +65,8 @@
   margin-bottom: 12px;
 }
 
-.checkboxWrapp {
+.CheckboxLabel {
   position: relative;
-  display: flex;
   margin-bottom: 65px;
 }
 
@@ -84,21 +82,32 @@
   overflow: hidden;
 }
 
+.CheckboxLabel {
+  cursor: pointer;
+  max-width: 380px;
+}
+
+.checkboxWrapp {
+  display: flex;
+}
+
 .checkbox {
   display: inline-block;
   width: 22px;
   height: 22px;
   min-width: 22px;
   min-height: 22px;
+  margin-right: 14px;
+  margin-top: 7px;
 
   background: #fff;
   border: 2px solid $blue;
-  margin-right: 14px;
 }
 
 .checked {
   width: 22px;
   height: 22px;
+  margin-top: 7px;
   margin-right: 14px;
 }
 
@@ -167,7 +176,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     width: 100%;
     margin-top: 35px;
 
@@ -175,9 +183,14 @@
       width: 100%;
       max-height: auto;
     }
+
+    button {
+      margin: 0 auto;
+    }
   }
-  .checkboxWrapp {
+  .CheckboxLabel {
     margin-bottom: 40px;
+    max-width: 370px;
   }
   .cake {
     display: flex;

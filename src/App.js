@@ -13,7 +13,7 @@ import './styles/index.scss';
 function App() {
   return (
     <div className="App">
-      <header className="header">
+      <header className="header" id="header">
         <div className="container header-container">
           <Nav theme={'header'} />
         </div>

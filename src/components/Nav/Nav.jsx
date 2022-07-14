@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import Logo from '../../img/logo.png';
+import { ReactComponent as Facebook } from '../../img/icon-facebook.svg';
+import { ReactComponent as Telegramm } from '../../img/icon-telegram.svg';
+import { ReactComponent as Twitter } from '../../img/icon-twitter.svg';
+import { ReactComponent as Logo } from '../../img/logo.svg';
 import { ReactComponent as Phone } from '../../img/phone.svg';
 import styles from './Nav.module.scss';
 
@@ -22,65 +25,82 @@ const Nav = (props) => {
   return (
     <>
       <nav className={`${styles.nav} ${styles[`nav--${props.theme}`]}`}>
-        <img className={styles.logo} src={Logo} alt="logo" />
+        <Link
+          href="#"
+          className={styles.logo}
+          to="header"
+          spy={true}
+          smooth={true}
+          offset={-50}
+          duration={500}>
+          <Logo />
+        </Link>
+
         <ul className={`${styles.navMenu} ${active ? styles.navMenuActive : ''}`}>
           <li>
-            <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
+            <Link href="about" to="about" spy={true} smooth={true} offset={-50} duration={500}>
               О нас
             </Link>
           </li>
           <li>
-            <Link to="assortment" spy={true} smooth={true} offset={0} duration={500}>
+            <Link
+              href="assortment"
+              to="assortment"
+              spy={true}
+              smooth={true}
+              offset={-50}
+              duration={500}>
               Ассортимент
             </Link>
           </li>
           <li>
-            <Link to="feedback" spy={true} smooth={true} offset={0} duration={500}>
+            <Link
+              href="feedback"
+              to="feedback"
+              spy={true}
+              smooth={true}
+              offset={-50}
+              duration={500}>
               Отзывы
             </Link>
           </li>
           <li>
-            <Link to="advantages" spy={true} smooth={true} offset={-50} duration={500}>
+            <Link
+              href="advantages"
+              to="advantages"
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}>
               Доставка
             </Link>
           </li>
           <li>
-            <Link to="order" spy={true} smooth={true} offset={0} duration={500}>
+            <Link href="order" to="order" spy={true} smooth={true} offset={-50} duration={500}>
               Контакты
             </Link>
           </li>
         </ul>
 
         <div className={`${styles.callbackBlock} ${styles[`callbackBlock--${props.theme}`]}`}>
-          <div className={props.theme === 'footer' ? styles.number : ''}>
-            {props.theme === 'header' && <Phone />}
-            <a href="tel:88009998877">8 (800) 999 88 77</a>
-          </div>
+          <a
+            href="tel:88009998877"
+            className={`${styles.phoneWrapp} ${props.theme === 'footer' ? styles.number : ''}`}>
+            {props.theme === 'header' && <Phone className={styles.phone} />}8 (800) 999 88 77
+          </a>
           {props.theme === 'header' && (
             <div className={styles.alert}>Заказать бесплатный звонок</div>
           )}
           {props.theme === 'footer' && (
             <div className={styles.socialIcons}>
               <a target="_blank" href="https://twitter.com/" rel="noreferrer">
-                <img
-                  className={styles.icon}
-                  src={require('../../img/icon-twitter.png')}
-                  alt="copyright-icon"
-                />
+                <Twitter className={styles.icon} />
               </a>
               <a target="_blank" href="https://ru-ru.facebook.com/" rel="noreferrer">
-                <img
-                  className={styles.icon}
-                  src={require('../../img/icon-facebook.png')}
-                  alt="copyright-icon"
-                />
+                <Facebook className={styles.icon} />
               </a>
               <a target="_blank" href="https://web.telegram.org/" rel="noreferrer">
-                <img
-                  className={styles.icon}
-                  src={require('../../img/icon-telegramm.png')}
-                  alt="copyright-icon"
-                />
+                <Telegramm className={styles.icon} />
               </a>
             </div>
           )}

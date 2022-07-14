@@ -2,15 +2,18 @@ import styles from './Button.module.scss';
 
 const Button = ({ isSending }) => {
   return (
-    <div className={`${styles.btn} ${isSending ? styles[`btn--sending`] : ''}`}>
-      <button type="submit">
+    <>
+      <button
+        className={`${styles.btn} ${isSending ? styles[`btn--sending`] : ''}`}
+        type="submit"
+        disabled={isSending && true}>
         {isSending ? (
           <img src={require('../../../img/sending.gif')} alt="sending-icon" />
         ) : (
           'Заказать'
         )}
       </button>
-    </div>
+    </>
   );
 };
 

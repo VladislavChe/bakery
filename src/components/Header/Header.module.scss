@@ -27,9 +27,7 @@
 }
 
 .inner {
-  position: relative;
   width: 45%;
-  z-index: 2;
 }
 
 .blotterInner {
@@ -284,12 +282,8 @@
 
 /* 450px - 576px */
 @media screen and (max-width: 576px) {
-  .offer {
-    justify-content: flex-start;
-  }
   .inner {
     max-width: 296px;
-    text-align: left;
   }
   .text {
     max-width: 490px;
@@ -315,6 +309,12 @@
 
 /* 320px - 450px */
 @media screen and (max-width: 450px) {
+  .offer {
+    justify-content: flex-start;
+  }
+  .inner {
+    text-align: left;
+  }
   .blotterInner {
     top: -261px;
     right: -308px;

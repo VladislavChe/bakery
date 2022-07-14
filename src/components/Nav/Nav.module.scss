@@ -14,28 +14,29 @@
 }
 
 .logo {
-  width: 101px;
-  height: 61px;
+  cursor: pointer;
 }
 
 .navMenu {
   display: flex;
 
   li {
-    padding: 0 8px 8px;
     margin-right: 65px;
-
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: $time;
-
-    &:hover {
-      border-bottom: 1px solid $lightBlack;
-      transition: $time;
-    }
 
     &:last-child {
       margin-right: 0px;
+    }
+
+    a {
+      padding: 0 8px 5px 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: $time;
+
+      &:hover {
+        border-bottom: 1px solid $lightBlack;
+        transition: $time;
+      }
     }
   }
 }
@@ -45,15 +46,26 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  cursor: pointer;
-
-  svg {
-    margin-right: 10px;
-  }
 
   &--footer {
-    cursor: pointer;
+    display: flex;
   }
+}
+
+.phoneWrapp {
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  transition: $time;
+
+  &:hover {
+    border-bottom: 1px solid $lightBlack;
+    transition: $time;
+  }
+}
+
+.phone {
+  margin-right: 10px;
 }
 .number {
   cursor: pointer;
@@ -66,22 +78,29 @@
   margin-top: 23px;
 
   a {
-    display: block;
+    display: inherit;
     margin-right: 19px;
 
     &:last-child {
       margin-right: 0;
     }
 
-    img {
-      width: 36.25px;
-      height: 36.25px;
+    svg {
+      * {
+        transition: $time;
+      }
+      &:hover * {
+        fill: #8fc4f1;
+        transition: $time;
+      }
     }
   }
 }
 
 .alert {
   font-size: 12px;
+  text-decoration: underline;
+  // border-bottom: 1px solid $lightBlack;
 }
 
 .hamburger {
