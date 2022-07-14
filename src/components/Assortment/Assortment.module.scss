@@ -38,6 +38,13 @@
     color: $blue;
     cursor: pointer;
     border-bottom: 1px solid $blue;
+    transition: $time;
+
+    &:hover {
+      color: $lightBlue;
+      border-bottom: 1px solid $lightBlue;
+      transition: $time;
+    }
   }
 }
 
