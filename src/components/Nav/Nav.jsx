@@ -89,7 +89,11 @@ const Nav = (props) => {
             {props.theme === 'header' && <Phone className={styles.phone} />}8 (800) 999 88 77
           </a>
           {props.theme === 'header' && (
-            <div className={styles.alert}>Заказать бесплатный звонок</div>
+            <div className={styles.alert}>
+              <Link href="order" to="order" spy={true} smooth={true} offset={-50} duration={500}>
+                Заказать бесплатный звонок
+              </Link>
+            </div>
           )}
           {props.theme === 'footer' && (
             <div className={styles.socialIcons}>

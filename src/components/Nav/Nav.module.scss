@@ -100,7 +100,14 @@
 .alert {
   font-size: 12px;
   text-decoration: underline;
-  // border-bottom: 1px solid $lightBlack;
+
+  cursor: pointer;
+  transition: $time;
+
+  &:hover {
+    transition: $time;
+    color: #a8a8a8;
+  }
 }
 
 .hamburger {
